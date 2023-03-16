@@ -6,7 +6,7 @@ ls
 pwd
 ls -al
 
-env_list="./env-list.yaml"
+env_list="/mnt/c/Users/HP/Desktop/Flairminds/Vinculum/DevOps/gitops-test/flux-infra-management/env-list.yaml"
 env_names=($(yq -r '.env[].name' $env_list))
 
 # Check if git is clean
