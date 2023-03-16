@@ -21,17 +21,17 @@ fi
 # Iterate over all environments in the env-list.yaml file
 for env in "${env_names[@]}"; do
   # Get the values of the current environment
-  name=$(yq eval ".env[] | select(.name == \"$env\") | .name" $env_list)
-  account_id=$(yq eval ".env[] | select(.name == \"$env\") | .account_id" $env_list)
-  region=$(yq eval ".env[] | select(.name == \"$env\") | .region" $env_list)
-  vpc_id=$(yq eval ".env[] | select(.name == \"$env\") | .vpc_id" $env_list)
-  subnet1=$(yq eval ".env[] | select(.name == \"$env\") | .subnet-1" $env_list)
-  subnet2=$(yq eval ".env[] | select(.name == \"$env\") | .subnet-2" $env_list)
-  subnet3=$(yq eval ".env[] | select(.name == \"$env\") | .subnet-3" $env_list)
-  key_id=$(yq eval ".env[] | select(.name == \"$env\") | .key_id" $env_list)
-  cluster_oidc_id=$(yq eval ".env[] | select(.name == \"$env\") | .cluster_oidc_id" $env_list)
-  security_group_id=$(yq eval ".env[] | select(.name == \"$env\") | .security_group_id" $env_list)
-  opensearch_vpc_endpoint=$(yq eval ".env[] | select(.name == \"$env\") | .opensearch_vpc_endpoint" $env_list)
+  name=$(yq -r ".env[] | select(.name == \"$env\") | .name" $env_list)
+  account_id=$(yq -r ".env[] | select(.name == \"$env\") | .account_id" $env_list)
+  region=$(yq -r ".env[] | select(.name == \"$env\") | .region" $env_list)
+  vpc_id=$(yq -r ".env[] | select(.name == \"$env\") | .vpc_id" $env_list)
+  subnet1=$(yq -r ".env[] | select(.name == \"$env\") | .subnet-1" $env_list)
+  subnet2=$(yq -r ".env[] | select(.name == \"$env\") | .subnet-2" $env_list)
+  subnet3=$(yq -r ".env[] | select(.name == \"$env\") | .subnet-3" $env_list)
+  key_id=$(yq -r ".env[] | select(.name == \"$env\") | .key_id" $env_list)
+  cluster_oidc_id=$(yq -r ".env[] | select(.name == \"$env\") | .cluster_oidc_id" $env_list)
+  security_group_id=$(yq -r ".env[] | select(.name == \"$env\") | .security_group_id" $env_list)
+  opensearch_vpc_endpoint=$(yq -r ".env[] | select(.name == \"$env\") | .opensearch_vpc_endpoint" $env_list)
 
   echo "$env,$name,$account_id,$region,$vpc_id,$subnet1,$subnet2,$subnet3,$key_id,$cluster_oidc_id,$security_group_id,$opensearch_vpc_endpoint"
 
