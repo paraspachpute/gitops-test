@@ -2,6 +2,10 @@
 
 git checkout template
 
+ls
+pwd
+ls -al
+
 env_list="./env-list.yaml"
 env_names=($(yq -r '.env[].name' $env_list))
 
