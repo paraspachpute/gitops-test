@@ -1,0 +1,24 @@
+env:
+  - name: dev
+    account_id: 34567
+    region: ap-south-1
+    vpc_id: ABC
+    subnet-1: SB_DEV1
+    subnet-2: SB_DEV2
+    subnet-3: SB_DEV3
+    cluster_oidc_id: OIDC_DEV
+    security_group_id: SG_DEV
+    key_id: MY_DEV_KEY
+    opensearch_vpc_endpoint: XYZ
+
+  - name: uat
+    account_id: 98764
+    region: ap-southeast-1
+    vpc_id: DEF
+    subnet-1: SB_UAT1
+    subnet-2: SB_UAT2
+    subnet-3: SB_UAT3
+    cluster_oidc_id: OIDC_UAT
+    security_group_id: SG_UAT
+    key_id: MY_UAT_KEY
+    opensearch_vpc_endpoint: UVW

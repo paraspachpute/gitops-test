@@ -1,0 +1,11 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: "ENV_NAME-workload-REGION-kube-system-fg-exec-policy-attachment1"
+spec:
+  deletionPolicy: "Delete"
+  forProvider:
+    policyArn: "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
+    roleName: "ENV_NAME-workload-REGION-kube-system-fp-exec-role"
+  providerConfigRef:
+    name: default

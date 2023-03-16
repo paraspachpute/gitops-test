@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-secrets
+  namespace: external-secrets
+spec:
+  chart:
+    spec:
+      chart: external-secrets
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets-hr
+  values:
+    replicaCount: 1
+    serviceAccount:
+      create: false
+      name: external-secrets-sa
+    installCRDs: true
+    webhook:
+      port: 9443
+    # version: 0.6.1

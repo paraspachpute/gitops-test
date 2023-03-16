@@ -1,0 +1,15 @@
+apiVersion: eks.aws.crossplane.io/v1alpha1
+kind: Addon
+metadata:
+  name: ENV_NAME-workload-addon-coredns
+  namespace: kube-system
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    addonName: coredns
+    addonVersion: "v1.8.4-eksbuild.1"
+    clusterName: "ENV_NAME-workload"
+    region: REGION
+    resolveConflicts: "Overwrite"
+  providerConfigRef:
+    name: default

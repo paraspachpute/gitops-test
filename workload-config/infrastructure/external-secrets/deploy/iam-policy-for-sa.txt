@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:GetSecretValue",
+                "ssm:DescribeParameters",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:GetParametersByPath"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": [
+                "kms:DescribeCustomKeyStores",
+                "kms:ListKeys",
+                "kms:ListAliases"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": [
+                "kms:Decrypt",
+                "kms:GetKeyRotationStatus",
+                "kms:GetKeyPolicy",
+                "kms:DescribeKey"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:kms:ap-south-1:695679586629:key/53717e73-0b74-4ecf-9f8e-768b9524754d"
+        }
+    ]
+}

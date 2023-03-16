@@ -1,0 +1,23 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: ENV_NAME-workload-REGION-sg
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    description: ENV_NAME-workload cluster security group
+    egress:
+      - fromPort: 80
+        ipProtocol: tcp
+        toPort: 80
+    groupName: ENV_NAME-workload-REGION-sg
+    ingress:
+      - fromPort: 80
+        ipProtocol: tcp
+        toPort: 80
+        ipRanges: 
+          - cidrIp: "10.0.0.0/8"
+    region: REGION
+    vpcId: vpc-0b451ec4b6032265d
+  providerConfigRef:
+    name: default

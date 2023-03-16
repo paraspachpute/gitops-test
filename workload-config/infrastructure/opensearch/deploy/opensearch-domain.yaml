@@ -1,0 +1,61 @@
+apiVersion: opensearchservice.aws.crossplane.io/v1alpha1
+kind: Domain
+metadata:
+  name: ENV_NAME-opensearch-domain
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    name: ENV_NAME-opensearch-domain
+    region: REGION
+    accessPolicies: |
+      {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "*"
+              },
+              "Action": "es:*",
+              "Resource": "arn:aws:es:REGION:ACCOUNT_ID:domain/ENV_NAME-opensearch-domain/*"
+          }
+        ]
+      }
+    advancedSecurityOptions:
+      enabled: true
+      internalUserDatabaseEnabled: true
+      masterUserOptions:
+        masterUserName: admin
+        masterUserPassword: Password@12345 # UGFzc3dvcmRAMTIzNDU=
+    autoTuneOptions:
+      desiredState: DISABLED
+    clusterConfig:
+      coldStorageOptions:
+        enabled: false
+      dedicatedMasterEnabled: false
+      instanceCount: 1
+      instanceType: "r6g.large.search"
+      warmEnabled: false
+      zoneAwarenessEnabled: false
+    cognitoOptions:
+      enabled: false
+    domainEndpointOptions:
+      customEndpointEnabled: false
+      enforceHTTPS: true
+    ebsOptions:
+      ebsEnabled: true
+      volumeType: gp3
+      volumeSize: 50
+      iops: 3000
+    encryptionAtRestOptions:
+      enabled: true
+      kmsKeyID: "KEY_ID"
+    engineVersion: "OpenSearch_2.3" # upgraded
+    nodeToNodeEncryptionOptions:
+      enabled: true
+    vpcOptions:
+      securityGroupIDs: ["SECURITY_GROUP_ID"]
+      subnetIDs:
+        - SUBNET_1
+        - SUBNET_2
+        - SUBNET_3

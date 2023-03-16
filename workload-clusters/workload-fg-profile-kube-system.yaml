@@ -1,0 +1,19 @@
+apiVersion: eks.aws.crossplane.io/v1beta1
+kind: FargateProfile
+metadata:
+  name: kube-system
+spec: 
+  deletionPolicy: "Delete"
+  forProvider: 
+    clusterName: ENV_NAME-workload
+    podExecutionRoleArnRef:
+      name: ENV_NAME-workload-REGION-kube-system-fp-exec-role
+    region: "REGION"
+    selectors:
+      - namespace: kube-system
+    subnets: 
+      - SUBNET_1
+      - SUBNET_2
+      - SUBNET_3
+  providerConfigRef:
+    name: default

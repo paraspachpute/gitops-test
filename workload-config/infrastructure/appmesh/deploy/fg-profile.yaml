@@ -1,0 +1,18 @@
+apiVersion: eks.aws.crossplane.io/v1beta1
+kind: FargateProfile
+metadata:
+  name: appmesh-system
+spec: 
+  deletionPolicy: "Delete"
+  forProvider: 
+    clusterName: ENV_NAME-workload
+    podExecutionRoleArn: "arn:aws:iam::ACCOUNT_ID:role/ENV_NAME-workload-appmesh-fp-exec-role"
+    region: REGION
+    selectors:
+      - namespace: appmesh-system
+    subnets:
+      - SUBNET_1
+      - SUBNET_2
+      - SUBNET_3
+  providerConfigRef:
+    name: default

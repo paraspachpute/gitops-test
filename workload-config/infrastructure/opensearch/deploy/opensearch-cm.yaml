@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ENV_NAME-opensearch-cm
+  namespace: opensearch
+data:
+  output.conf: |
+    [OUTPUT]
+      Name  es
+      Match *      
+      Host  OPENSEARCH_VPC_ENDPOINT
+      Port  443      
+      Logstash_Format On
+      Logstash_Prefix_Key kubernetes['namespace']      
+      AWS_Auth On
+      AWS_Region REGION
+      tls   On

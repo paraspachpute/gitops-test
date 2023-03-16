@@ -1,0 +1,15 @@
+apiVersion: eks.aws.crossplane.io/v1alpha1
+kind: Addon
+metadata:
+  name: ENV_NAME-workload-addon-vpc-cni
+  namespace: kube-system
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    addonName: vpc-cni
+    addonVersion: "v1.10.1-eksbuild.1"
+    clusterName: "ENV_NAME-workload"
+    region: REGION
+    resolveConflicts: "Overwrite"
+  providerConfigRef:
+    name: default

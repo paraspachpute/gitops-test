@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- fg-profile.yaml
+- namespace.yaml
+- dbcluster-secret.yaml # implement external secret for pwd
+- dbcluster-secret-dev-admin.yaml # implement external secret for pwd
+- db-cluster.yaml
+- db-cluster-dev-admin.yaml
+- db-instance.yaml
+- db-instance-dev-admin.yaml

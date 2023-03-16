@@ -1,0 +1,15 @@
+apiVersion: eks.aws.crossplane.io/v1beta1
+kind: FargateProfile
+metadata:
+  name: crossplane-system
+spec: 
+  deletionPolicy: "Delete"
+  forProvider: 
+    clusterName: dev-management
+    podExecutionRoleArn: "arn:aws:iam::695679586629:role/dev-management-crossplane-system-fp-exec-role"
+    region: "ap-south-1"
+    selectors:
+      - namespace: crossplane-system
+    subnets: ["subnet-0d552a236d3ff2212","subnet-068a14caf774d910a"]
+  providerConfigRef:
+    name: default

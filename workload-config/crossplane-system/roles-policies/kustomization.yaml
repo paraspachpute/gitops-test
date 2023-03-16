@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+Kind: Kustomization
+
+resources:
+- fp-exec-roles
+# add git-repo and release (mentioned in aws-provider)

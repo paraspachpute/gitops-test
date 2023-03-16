@@ -1,0 +1,24 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: "dev-management-crossplane-system-fp-exec-role"
+spec:
+  deletionPolicy: "Delete"
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Principal": {
+                      "Service": "eks-fargate-pods.amazonaws.com"
+                  },
+                  "Action": "sts:AssumeRole"
+              }
+          ]
+      }
+    description: "dev-management crossplane-system fargate pod execution role"
+    maxSessionDuration: 3600
+  providerConfigRef:
+    name: default

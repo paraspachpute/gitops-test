@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: appmesh
+  namespace: appmesh-system
+spec:
+  chart:
+    spec:
+      chart: appmesh-controller
+      sourceRef:
+        kind: HelmRepository
+        name: appmesh-system-hr
+  values:
+    region: REGION
+    serviceAccount:
+      create: false
+      name: appmesh-controller
+    sidecar:
+      resources:
+          requests:
+            cpu: 512m
+            memory: 1024Mi

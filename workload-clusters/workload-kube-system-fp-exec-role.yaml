@@ -1,0 +1,25 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: "ENV_NAME-workload-REGION-kube-system-fp-exec-role"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Principal": {
+                  "Service": "eks-fargate-pods.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+          }
+        ]
+      }
+    description: "Role to be used by ENV_NAME-workload-kube-system-fp-exec-role"
+    maxSessionDuration: 3600
+  providerConfigRef:
+    name: default  
+    

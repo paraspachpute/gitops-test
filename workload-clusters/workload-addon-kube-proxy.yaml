@@ -1,0 +1,15 @@
+apiVersion: eks.aws.crossplane.io/v1alpha1
+kind: Addon
+metadata:
+  name: ENV_NAME-workload-addon-kube-proxy
+  namespace: kube-system
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    addonName: kube-proxy
+    addonVersion: "v1.21.14-eksbuild.4"
+    clusterName: "ENV_NAME-workload"
+    region: REGION
+    resolveConflicts: "Overwrite"
+  providerConfigRef:
+    name: default

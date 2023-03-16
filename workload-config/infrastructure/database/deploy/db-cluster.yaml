@@ -1,0 +1,29 @@
+apiVersion: rds.aws.crossplane.io/v1alpha1
+kind: DBCluster
+metadata:
+  name: ENV_NAME-microservices-db-cluster
+spec:
+  forProvider:
+    region: REGION
+    engine: aurora-postgresql
+    engineMode: provisioned
+    engineVersion: "14.3"
+    # scalingConfiguration:
+    #   maxCapacity: 2
+    #   minCapacity: 1
+    enableIAMDatabaseAuthentication: true
+    vpcSecurityGroupIDs: SECURITY_GROUP_ID
+    dbSubnetGroupName: "ENV_NAME-workload-db-subnetgroup"
+    masterUsername: master
+    masterUserPasswordSecretRef:
+      name: ENV_NAME-microservices-dbcluster-pwd
+      namespace: databases
+      key: password
+    databaseName: auroradb
+    applyImmediately: true
+    finalDBSnapshotIdentifier: ENV_NAME-microservices-db-cluster
+  writeConnectionSecretToRef:
+    name: aurora-secrets
+    namespace: databases
+  providerConfigRef:
+    name: default

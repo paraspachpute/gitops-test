@@ -1,0 +1,29 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: "ENV_NAME-workload-appmesh-sa-role"
+spec:
+  deletionPolicy: "Delete"
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Principal": {
+                      "Federated": "arn:aws:iam::ACCOUNT_ID:oidc-provider/oidc.eks.REGION.amazonaws.com/id/CLUSTER_OIDC_ID"
+                  },
+                  "Action": "sts:AssumeRoleWithWebIdentity",
+                  "Condition": {
+                      "StringEquals": {
+                          "oidc.eks.REGION.amazonaws.com/id/CLUSTER_OIDC_ID:aud": "sts.amazonaws.com"
+                      }
+                  }
+              }
+          ]
+      }
+    description: "Role to be used by appmesh in ENV_NAME-workload cluster"
+    maxSessionDuration: 3600
+  providerConfigRef:
+    name: default  

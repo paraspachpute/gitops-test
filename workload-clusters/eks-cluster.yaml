@@ -1,0 +1,26 @@
+apiVersion: eks.aws.crossplane.io/v1beta1
+kind: Cluster
+metadata:
+  name: ENV_NAME-workload
+spec:
+  deletionPolicy: Delete
+  forProvider: 
+    kubernetesNetworkConfig:
+      ipFamily: ipv4
+    logging:
+      clusterLogging:
+        - enabled: False
+    region: REGION
+    resourcesVpcConfig:
+      endpointPrivateAccess: True
+      endpointPublicAccess: False
+      securityGroupIds: SECURITY_GROUP
+      subnetIds: 
+        - SUBNET_1
+        - SUBNET_2
+        - SUBNET_3
+    roleArnRef:
+      name: "ENV_NAME-workload-REGION-cluster-role"
+    version: "1.22"
+  providerConfigRef:
+    name: default
