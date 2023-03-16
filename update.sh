@@ -33,7 +33,8 @@ for env in "${env_names[@]}"; do
 
   # Create a new branch for the current environment
   git checkout -b $env
-
+  git branch -a
+  git status
   # Update the environment variables in the YAML files
   cd workload-config/infrastructure/
   find . -type f -name '*.yaml' -exec sed -i "s/ENV_NAME/$name/g" {} +
@@ -49,8 +50,10 @@ for env in "${env_names[@]}"; do
   find . -type f -name '.yaml' -exec sed -i "s/OPENSEARCH_VPC_ENDPOINT/$opensearch_vpc_endpoint/g" {} +
   
   git add .
+  git status
   git commit -m "Update environment variables for $env"
   git push -u origin $env
-
+  git status
+  git branch -a
   git checkout template
 done
