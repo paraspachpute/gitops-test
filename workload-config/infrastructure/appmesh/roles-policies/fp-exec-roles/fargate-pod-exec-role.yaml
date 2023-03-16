@@ -1,7 +1,7 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Role
 metadata:
-  name: "ENV_NAME-workload-appmesh-fp-exec-role"
+  name: "-workload-appmesh-fp-exec-role"
 spec:
   deletionPolicy: "Delete"
   forProvider:
@@ -18,7 +18,7 @@ spec:
               }
           ]
       }
-    description: "ENV_NAME-workload appmesh fargate pod execution role"
+    description: "-workload appmesh fargate pod execution role"
     maxSessionDuration: 3600
   providerConfigRef:
     name: default

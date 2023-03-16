@@ -11,8 +11,8 @@ spec:
         kind: HelmRepository
         name: eks
   values:
-    clusterName: ENV_NAME-workload
+    clusterName: -workload
     serviceAccount:
       create: false
       name: aws-load-balancer-controller
-    vpcId: VPC_ID
+    vpcId: 

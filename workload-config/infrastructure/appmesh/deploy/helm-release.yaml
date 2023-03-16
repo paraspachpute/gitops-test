@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: appmesh-system-hr
   values:
-    region: REGION
+    region: 
     serviceAccount:
       create: false
       name: appmesh-controller

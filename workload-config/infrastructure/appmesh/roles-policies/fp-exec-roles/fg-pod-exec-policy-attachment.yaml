@@ -1,11 +1,11 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: "ENV_NAME-workload-appmesh-fg-exec-policy"
+  name: "-workload-appmesh-fg-exec-policy"
 spec:
   deletionPolicy: "Delete"
   forProvider:
     policyArn: "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
-    roleName: "ENV_NAME-workload-appmesh-fp-exec-role"
+    roleName: "-workload-appmesh-fp-exec-role"
   providerConfigRef:
     name: default
