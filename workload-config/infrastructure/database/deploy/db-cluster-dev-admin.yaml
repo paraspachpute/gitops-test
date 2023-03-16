@@ -1,10 +1,10 @@
 apiVersion: rds.aws.crossplane.io/v1alpha1
 kind: DBCluster
 metadata:
-  name: ENV_NAME-admin-db-cluster
+  name: dev-admin-db-cluster
 spec:
   forProvider:
-    region: REGION
+    region: ap-south-1
     engine: aurora-postgresql
     engineMode: provisioned
     engineVersion: "14.3"
@@ -13,17 +13,17 @@ spec:
     #   minCapacity: 1
     enableIAMDatabaseAuthentication: true
     vpcSecurityGroupIDs: SECURITY_GROUP_ID
-    dbSubnetGroupName: "ENV_NAME-workload-db-subnetgroup"
+    dbSubnetGroupName: "dev-workload-db-subnetgroup"
     masterUsername: master
     masterUserPasswordSecretRef:
-      name: ENV_NAME-dbcluster-admin-pwd
+      name: dev-dbcluster-admin-pwd
       namespace: databases
       key: password
     databaseName: grafana
     applyImmediately: true
-    finalDBSnapshotIdentifier: ENV_NAME-admin-db-cluster
+    finalDBSnapshotIdentifier: dev-admin-db-cluster
   writeConnectionSecretToRef:
-    name: aurora-secrets-ENV_NAME-admin
+    name: aurora-secrets-dev-admin
     namespace: databases
   providerConfigRef:
     name: default

@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: ENV_NAME-opensearch-cm
+  name: dev-opensearch-cm
   namespace: opensearch
 data:
   output.conf: |
@@ -13,5 +13,5 @@ data:
       Logstash_Format On
       Logstash_Prefix_Key kubernetes['namespace']      
       AWS_Auth On
-      AWS_Region REGION
+      AWS_Region ap-south-1
       tls   On

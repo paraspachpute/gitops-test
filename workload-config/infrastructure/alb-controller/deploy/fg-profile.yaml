@@ -5,14 +5,14 @@ metadata:
 spec: 
   deletionPolicy: "Delete"
   forProvider: 
-    clusterName: ENV_NAME-workload
-    podExecutionRoleArn: "arn:aws:iam::ACCOUNT_ID:role/ENV_NAME-workload-alb-controller-fp-exec-role"
-    region: REGION
+    clusterName: dev-workload
+    podExecutionRoleArn: "arn:aws:iam::34567:role/dev-workload-alb-controller-fp-exec-role"
+    region: ap-south-1
     selectors:
       - namespace: alb-controller
     subnets:
-      - SUBNET_1
-      - SUBNET_2
-      - SUBNET_3
+      - SB_DEV1
+      - SB_DEV2
+      - SB_DEV3
   providerConfigRef:
     name: default

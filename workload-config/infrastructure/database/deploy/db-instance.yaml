@@ -1,18 +1,18 @@
 apiVersion: rds.aws.crossplane.io/v1alpha1
 kind: DBInstance
 metadata:
-  name: ENV_NAME-microservices-db-instance
+  name: dev-microservices-db-instance
 spec:
   forProvider:
-    region: REGION
+    region: ap-south-1
     dbInstanceClass: db.t4g.medium
-    dbSubnetGroupName: "ENV_NAME-workload-db-subnetgroup"
+    dbSubnetGroupName: "dev-workload-db-subnetgroup"
     engine: aurora-postgresql
     engineVersion: "14.3"
-    dbClusterIdentifier: ENV_NAME-microservices-db-cluster
+    dbClusterIdentifier: dev-microservices-db-cluster
     applyImmediately: true
     publiclyAccessible: false
-    finalDBSnapshotIdentifier: ENV_NAME-microservices-db-instance
+    finalDBSnapshotIdentifier: dev-microservices-db-instance
   writeConnectionSecretToRef:
-    name: ENV_NAME-aurora-postgres-instance
+    name: dev-aurora-postgres-instance
     namespace: databases
