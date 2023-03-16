@@ -5,14 +5,14 @@ metadata:
 spec: 
   deletionPolicy: "Delete"
   forProvider: 
-    clusterName: -workload
-    podExecutionRoleArn: "arn:aws:iam:::role/-workload-opensearch-fp-exec-role"
-    region: 
+    clusterName: ENV_NAME-workload
+    podExecutionRoleArn: "arn:aws:iam::ACCOUNT_ID:role/ENV_NAME-workload-opensearch-fp-exec-role"
+    region: REGION
     selectors:
       - namespace: opensearch
     subnets:
-      - 
-      - 
-      - 
+      - SUBNET_1
+      - SUBNET_2
+      - SUBNET_3
   providerConfigRef:
     name: default

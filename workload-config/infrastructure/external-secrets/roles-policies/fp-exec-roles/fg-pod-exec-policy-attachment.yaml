@@ -1,11 +1,11 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: "-workload-external-secrets-fg-exec-policy"
+  name: "ENV_NAME-workload-external-secrets-fg-exec-policy"
 spec:
   deletionPolicy: "Delete"
   forProvider:
     policyArn: "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
-    roleName: "-workload-external-secrets-fp-exec-role"
+    roleName: "ENV_NAME-workload-external-secrets-fp-exec-role"
   providerConfigRef:
     name: default

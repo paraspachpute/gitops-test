@@ -1,12 +1,12 @@
 apiVersion: opensearchservice.aws.crossplane.io/v1alpha1
 kind: Domain
 metadata:
-  name: -opensearch-domain
+  name: ENV_NAME-opensearch-domain
 spec:
   deletionPolicy: Delete
   forProvider:
-    name: -opensearch-domain
-    region: 
+    name: ENV_NAME-opensearch-domain
+    region: REGION
     accessPolicies: |
       {
       "Version": "2012-10-17",
@@ -17,7 +17,7 @@ spec:
                   "AWS": "*"
               },
               "Action": "es:*",
-              "Resource": "arn:aws:es:::domain/-opensearch-domain/*"
+              "Resource": "arn:aws:es:REGION:ACCOUNT_ID:domain/ENV_NAME-opensearch-domain/*"
           }
         ]
       }
@@ -56,6 +56,6 @@ spec:
     vpcOptions:
       securityGroupIDs: ["SECURITY_GROUP_ID"]
       subnetIDs:
-        - 
-        - 
-        - 
+        - SUBNET_1
+        - SUBNET_2
+        - SUBNET_3

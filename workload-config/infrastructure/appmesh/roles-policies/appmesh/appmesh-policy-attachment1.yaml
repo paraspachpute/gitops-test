@@ -1,11 +1,11 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: "-workload-appmesh-policy1"
+  name: "ENV_NAME-workload-appmesh-policy1"
 spec:
   deletionPolicy: "Delete"
   forProvider:
     policyArn: "arn:aws:iam::aws:policy/AWSCloudMapFullAccess"
-    roleName: "-workload-appmesh-sa-role"
+    roleName: "ENV_NAME-workload-appmesh-sa-role"
   providerConfigRef:
     name: default
