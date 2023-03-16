@@ -37,8 +37,13 @@ for env in "${env_names[@]}"; do
 
   # Create a new branch for the current environment
   git checkout -b $env
+  git checkout $env
   git branch -a
   git status
+
+  ls
+  pwd
+  ls -al
   # Update the environment variables in the YAML files
   cd workload-config/infrastructure/
   find . -type f -name '*.yaml' -exec sed -i "s/ENV_NAME/$name/g" {} +
