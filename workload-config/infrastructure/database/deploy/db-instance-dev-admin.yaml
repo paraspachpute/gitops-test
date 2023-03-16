@@ -1,18 +1,18 @@
 apiVersion: rds.aws.crossplane.io/v1alpha1
 kind: DBInstance
 metadata:
-  name: ENV_NAME-admin-db-instance
+  name: uat-admin-db-instance
 spec:
   forProvider:
-    region: REGION
+    region: ap-southeast-1
     dbInstanceClass: db.t4g.medium
-    dbSubnetGroupName: "ENV_NAME-workload-db-subnetgroup"
+    dbSubnetGroupName: "uat-workload-db-subnetgroup"
     engine: aurora-postgresql
     engineVersion: "14.3"
-    dbClusterIdentifier: ENV_NAME-admin-db-cluster
+    dbClusterIdentifier: uat-admin-db-cluster
     applyImmediately: true
     publiclyAccessible: false
-    finalDBSnapshotIdentifier: ENV_NAME-admin-db-instance
+    finalDBSnapshotIdentifier: uat-admin-db-instance
   writeConnectionSecretToRef:
-    name: db-secrets-ENV_NAME-admin
+    name: db-secrets-uat-admin
     namespace: databases

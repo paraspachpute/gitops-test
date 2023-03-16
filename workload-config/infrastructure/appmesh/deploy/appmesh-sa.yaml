@@ -2,6 +2,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::ACCOUNT_ID:role/ENV_NAME-workload-appmesh-sa-role
+    eks.amazonaws.com/role-arn: arn:aws:iam::98764:role/uat-workload-appmesh-sa-role
   name: appmesh-controller
   namespace: appmesh-system

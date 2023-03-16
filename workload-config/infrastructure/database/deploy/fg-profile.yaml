@@ -5,14 +5,14 @@ metadata:
 spec: 
   deletionPolicy: "Delete"
   forProvider: 
-    clusterName: ENV_NAME-workload
-    podExecutionRoleArn: "arn:aws:iam::ACCOUNT_ID:role/ENV_NAME-workload-database-fp-exec-role"
-    region: REGION
+    clusterName: uat-workload
+    podExecutionRoleArn: "arn:aws:iam::98764:role/uat-workload-database-fp-exec-role"
+    region: ap-southeast-1
     selectors:
       - namespace: databases
     subnets: 
-      - SUBNET_1
-      - SUBNET_2
-      - SUBNET_3
+      - SB_UAT1
+      - SB_UAT2
+      - SB_UAT3
   providerConfigRef:
     name: default
