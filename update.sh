@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git checkout template
+
 env_list="./env-list.yaml"
 env_names=($(yq -r '.env[].name' $env_list))
 
@@ -11,11 +13,6 @@ if [[ $(git status --porcelain) ]]; then
   exit 1
 fi
 
-# Switch to master branch
-git checkout master
-
-# Create template branch
-git checkout -b template
 
 # Iterate over all environments in the env-list.yaml file
 for env in "${env_names[@]}"; do
